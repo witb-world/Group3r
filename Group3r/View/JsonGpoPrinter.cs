@@ -30,7 +30,7 @@ namespace Group3r.View
         jSettings = new JsonSerializerSettings
         {
             NullValueHandling = NullValueHandling.Ignore,
-            Formatting = Formatting.Indented,
+            Formatting = Formatting.None, // turn off indented formatting for "true" JSONL style
             Converters = new List<JsonConverter>() { new StringEnumConverter() }
         };
     }
