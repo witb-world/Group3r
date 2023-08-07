@@ -124,11 +124,11 @@ namespace Group3r.Assessment
                 ShortcutSetting castSetting = (ShortcutSetting)setting;
                 return new ShortcutAnalyser() { setting = castSetting };
             }
-            //            else if (setting.GetType() == typeof(SystemAccessSetting))
-            //            {
-            //                SystemAccessSetting castSetting = (SystemAccessSetting)setting;
-            //                return new SystemAccessAnalyser() { setting = castSetting };
-            //            }
+            else if (setting.GetType() == typeof(SystemAccessSetting))
+            {
+                SystemAccessSetting castSetting = (SystemAccessSetting)setting;
+                return new SystemAccessAnalyser() { setting = castSetting };
+            }
             //            else if (setting.GetType() == typeof(UserSetting))
             //            {
             //                UserSetting castSetting = (UserSetting)setting;

@@ -120,6 +120,7 @@ namespace LibSnaffle.ActiveDirectory
                             lineKey = (splitLine[0]).Trim();
                         }
 
+                        Logger.Info("Encountered section heading: " + sectionHeading);
                         switch (sectionHeading)
                         {
                             case "Privilege Rights":
