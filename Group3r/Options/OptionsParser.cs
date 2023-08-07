@@ -38,6 +38,8 @@ namespace Group3r.Options
             parser.Arguments.Add(new ValueArgument<int>('a', "mintriage", "Minimum severity of findings to show where 1 is lowest severity and 4 is highest."));
             parser.Arguments.Add(new ValueArgument<string>('u', "testuser", "Permission checks will focus on what access is available to this user. Format as domain\\user"));
             parser.Arguments.Add(new SwitchArgument('e', "enabled", "Only displays policy types and settings that are enabled.", false));
+            parser.Arguments.Add(new ValueArgument<string>('j', "jsonoutput", "Specify path for results and keep results separate from logging/degubs."));
+
             return parser;
         }
 
@@ -142,6 +144,19 @@ namespace Group3r.Options
                         options.EnabledPolOnly = true;
                         mq.Degub("Limiting output to enabled policy only.");
                         break;
+
+                    case "jsonoutput":
+                        if (!String.IsNullOrEmpty(value))
+                        {
+                            mq.Degub("Setting output file path to " + value);
+                            options.JsonResults = true;
+                            options.JsonFilePath = value;
+                        }
+                        else
+                        {
+                            mq.Degub("No output file path specified.");
+                        }
+                        break;
                     case "testuser":
                         options.TargetUserName = value;
                         break;
@@ -186,6 +201,7 @@ namespace Group3r.Options
                         break;
                     case "printer":
                         options.PrinterType = value;
+                        mq.Info("Set PrinterType to " + options.PrinterType);
                         break;
                     default:
                         throw new CommandLineArgumentException("Something went real squirrelly in the command line args.", value);
